@@ -18,14 +18,13 @@ public class UserController {
 	public ModelAndView show(@PathVariable int index) {
 		User user = users.get(index);
 		
-		ModelAndView mav = new ModelAndView("/baseball/profile");
+		ModelAndView mav = new ModelAndView("/users/profile");
 		mav.addObject("user", user);
 		return mav;
 	}
 	
-	
 	@PostMapping("/users")
-	public ModelAndView create(User user) {
+	public ModelAndView userCreate(User user) {
 		users.add(user);
 		System.out.println("size : " + users.size());
 		
@@ -33,8 +32,8 @@ public class UserController {
 	}
 	
 	@GetMapping("/users")
-	public ModelAndView list() {
-		ModelAndView mav = new ModelAndView("/baseball/list");
+	public ModelAndView userList() {
+		ModelAndView mav = new ModelAndView("/users/list");
 		mav.addObject("users", users);
 		
 		return mav;
